@@ -1,0 +1,1 @@
+-I"/home/es/es_es/es_doeiit00/WORK/COLMAP/colmap-3.11.1/src" -isystem /usr/include/eigen3 -isystem "/home/es/es_es/es_doeiit00/WORK/COLMAP/ceres-solver-2.2.0/BUILD_FOR_COLMAP/usr/include/ceres/internal/miniglog" -isystem "/home/es/es_es/es_doeiit00/WORK/COLMAP/ceres-solver-2.2.0/BUILD_FOR_COLMAP/usr/include" -isystem /opt/bwhpc/common/devel/cuda/12.8.1/include

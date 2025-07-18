@@ -1,0 +1,31 @@
+--- src/colmap/util/logging.h.backup
++++ src/colmap/util/logging.h
+@@ -75,12 +75,25 @@
+ 
+ #define CHECK_OP_LOG(name, op, val1, val2, log)                          \
+   while (colmap::CheckOpString _result = colmap::name##Impl(              \
+-             colmap::GetReferenceableValue(val1),                        \
+-             colmap::GetReferenceableValue(val2), #val1 " " #op " " #val2)) \
++             (val1), (val2), #val1 " " #op " " #val2))                   \
+     log(__FILE__, __LINE__, _result).stream()
+ 
+-#define THROW_CHECK(condition)                                       \
+-  LOG_IF(FATAL_THROW, GOOGLE_PREDICT_BRANCH_NOT_TAKEN(!(condition))) \
++// Define missing macros
++#define GOOGLE_PREDICT_BRANCH_NOT_TAKEN(x) (x)
++#define GOOGLE_PREDICT_FALSE(x) (x)
++#define FATAL_THROW FATAL
++#define _EQ ==
++#define _NE !=
++#define _LE <=
++#define _LT <
++#define _GE >=
++#define _GT >
++
++#define LOG_FATAL_THROW LOG(FATAL)
++
++#define THROW_CHECK(condition)                                       \
++  LOG_IF(FATAL, !(condition))                                       \
+       << "Check failed: " #condition ". "
+ 
+ #define THROW_CHECK_OP(name, op, val1, val2) \
